@@ -1,6 +1,6 @@
 var textUtils = function(o) {
   var settings = {
-    readWordsPerMin: 280,
+    readWordsPerMin: 270,
     minute: 'minute',
     minutes: 'minutes',
     lessThan: 'Less than'
@@ -30,7 +30,8 @@ var textUtils = function(o) {
    */
   _getReadingTime = function(el, format) {
     var totalWords = _getTotalWords(el);
-    var totalSeconds = totalWords / (settings.readWordsPerMin / totalWords);
+    var wpm = settings.readWordsPerMin / 60;
+    var totalSeconds = totalWords / wpm;
     
     if (!format) {
       return Math.round(totalSeconds);
